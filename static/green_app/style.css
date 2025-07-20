@@ -1,0 +1,76 @@
+/* style.css - Modern responsive design */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+header, footer {
+    background-color: #2e7d32;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+nav {
+    background-color: #388e3c;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+h1, h2, h3 {
+    color: #2e7d32;
+}
+
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.about-section p {
+    line-height: 1.6;
+}
+
+footer {
+    margin-top: 3rem;
+}
+.hero {
+  background: url('/static/green_app/hero-bg.jpg') center/cover no-repeat;
+}
+.hero .btn {
+  font-weight: bold;
+}
+.card {
+  border-radius: 0.5rem;
+}
+.card-title {
+  color: #065f46;
+}
+.card-text {
+  color: #2f855a;
+}

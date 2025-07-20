@@ -1,0 +1,20 @@
+{% extends 'green_app/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4 text-danger">Confirm Account Deletion</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <p class="text-center">Are you sure you want to delete your account? This action is <strong>irreversible</strong>.</p>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-danger">Yes, delete my account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

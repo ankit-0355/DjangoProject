@@ -1,0 +1,21 @@
+{% extends 'green_app/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <i class="fas fa-history"></i> User History
+        </div>
+        <div class="card-body">
+            <p>You have visited this site <strong>{{ num_visits }}</strong> time(s) during this session.</p>
+            <p>Your last visit was:
+                {% if last_visit %}
+                    {{ last_visit }}
+                {% else %}
+                    This is your first visit.
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'green_app/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>{{ object.title }}</h2>
+    </div>
+    <div class="card-body">
+        {% if object.image %}
+            <img src="{{ object.image.url }}" class="img-fluid rounded mb-3" alt="{{ object.title }}">
+        {% endif %}
+        <h5 class="card-subtitle mb-2 text-muted"><strong>Category:</strong> {{ object.category.name }}</h5>
+        <p><strong>Submitted by:</strong> {{ object.submitted_by.username }} on {{ object.submission_date|date:"F d, Y" }}</p>
+        <hr>
+        <p>{{ object.description|linebreaks }}</p>
+    </div>
+</div>
+
+
+
+{% if user == object.submitted_by or user.is_superuser %}
+    <form method="post" action="{% url 'delete_idea' object.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">Delete This Idea</button>
+    </form>
+{% endif %}
+
+<a href="{% url 'index' %}" class="btn btn-secondary mt-3">← Back to Home</a>
+{% endblock %}

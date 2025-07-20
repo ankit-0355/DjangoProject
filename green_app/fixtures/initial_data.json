@@ -1,0 +1,34 @@
+[
+  {
+    "model": "green_app.category",
+    "pk": 1,
+    "fields": {
+      "name": "Solar Power",
+      "description": "Technologies related to harnessing energy from the sun."
+    }
+  },
+  {
+    "model": "green_app.category",
+    "pk": 2,
+    "fields": {
+      "name": "Water Conservation",
+      "description": "Methods and devices for reducing water consumption."
+    }
+  },
+  {
+    "model": "green_app.category",
+    "pk": 3,
+    "fields": {
+      "name": "Sustainable Agriculture",
+      "description": "Farming practices that are sustainable and environmentally friendly."
+    }
+  },
+    {
+    "model": "green_app.category",
+    "pk": 4,
+    "fields": {
+      "name": "Recycling & Waste Reduction",
+      "description": "Innovations in recycling processes and waste management."
+    }
+  }
+]

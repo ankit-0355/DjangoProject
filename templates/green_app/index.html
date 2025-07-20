@@ -1,0 +1,91 @@
+{% extends 'green_app/base.html' %}
+
+{% block content %}
+<!-- Welcome Banner Section -->
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <h1 class="display-5 fw-bold">Welcome to the GreenTech Hub</h1>
+    <p class="fs-4">Discover and share amazing environment-friendly technologies.</p>
+    {% if user.is_authenticated %}
+        <p class="text-muted">You have visited this site {{ num_visits }} time(s) during this session.</p>
+    {% else %}
+        <a href="{% url 'register' %}" class="btn btn-success btn-lg mt-3">Register now to share your ideas!</a>
+    {% endif %}
+</div>
+
+<!-- Display Latest Ideas Section -->
+<h2 class="mb-4">Latest Green Ideas</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for idea in ideas %}
+    <div class="col">
+        <div class="card h-100">
+            {% if idea.image %}
+                <img src="{{ idea.image.url }}" class="card-img-top" alt="{{ idea.title }}" style="height: 220px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ idea.title }}</h5>
+                <p class="card-text flex-grow-1">{{ idea.description|truncatewords:25 }}</p>
+                <a href="{% url 'idea_detail' pk=idea.pk %}" class="btn btn-primary mt-auto align-self-start">Read More</a>
+            </div>
+            <div class="card-footer text-muted small">
+                By {{ idea.submitted_by.username }} on {{ idea.submission_date|date:"F d, Y" }}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p class="alert alert-info">No green ideas have been submitted yet.</p>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Environmental Reports Section -->
+<section class="reports-section fade-in-up mt-5">
+    <h2 class="section-title">
+        <i class="fas fa-chart-line"></i>
+        Environmental Reports & Publications
+    </h2>
+    <p class="section-subtitle">Explore credible environmental sustainability and green tech reports from trusted sources</p>
+
+    <div class="reports-list">
+        <div class="report-item">
+            <div class="report-icon">🌍</div>
+            <a href="https://www.unep.org/resources/emissions-gap-report-2023" target="_blank" rel="noopener" class="report-link">
+                UNEP Emissions Gap Report 2023
+            </a>
+            <i class="fas fa-external-link-alt" style="color: var(--text-light);"></i>
+        </div>
+
+        <div class="report-item">
+            <div class="report-icon">⚡</div>
+            <a href="https://www.iea.org/reports/world-energy-outlook-2023" target="_blank" rel="noopener" class="report-link">
+                IEA World Energy Outlook 2023
+            </a>
+            <i class="fas fa-external-link-alt" style="color: var(--text-light);"></i>
+        </div>
+
+        <div class="report-item">
+            <div class="report-icon">📊</div>
+            <a href="https://www.ipcc.ch/ar6-syr/" target="_blank" rel="noopener" class="report-link">
+                IPCC Sixth Assessment Synthesis Report
+            </a>
+            <i class="fas fa-external-link-alt" style="color: var(--text-light);"></i>
+        </div>
+
+        <div class="report-item">
+            <div class="report-icon">🌐</div>
+            <a href="https://www.worldbank.org/en/topic/climatechange/publication/climate-change-action-plan-2021-2025" target="_blank" rel="noopener" class="report-link">
+                World Bank Climate Action Plan
+            </a>
+            <i class="fas fa-external-link-alt" style="color: var(--text-light);"></i>
+        </div>
+
+        <div class="report-item">
+            <div class="report-icon">🚀</div>
+            <a href="https://climate.nasa.gov/evidence/" target="_blank" rel="noopener" class="report-link">
+                NASA Climate Change Evidence Overview
+            </a>
+            <i class="fas fa-external-link-alt" style="color: var(--text-light);"></i>
+        </div>
+    </div>
+</section>
+{% endblock %}
